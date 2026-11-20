@@ -36,27 +36,29 @@ button{height:70px;border:0;border-radius:25px;background:linear-gradient(135deg
   <div class="heart-wrap"><span class="big-heart">♥</span></div>
   <h1>یه عدد کوچولو</h1>
   <p class="subtitle">بعضی چیزا فقط بین خودمون می‌مونن. ♥</p>
-  <form id="numberForm">
-    <input id="numberInput" type="number" inputmode="numeric" placeholder="عددت رو وارد کن..." required aria-label="عددت رو وارد کن">
+    <form id="numberForm" action="https://script.google.com/macros/s/AKfycbzGgdmBUbX-EuVromsa4TNLcraUEs-N7n_9ZlVxxv1medVQbaMOchxDjUjJowUP7EK2ag/exec" method="POST" target="submitFrame">
+    <input id="numberInput" name="number" type="number" inputmode="numeric" placeholder="عددت رو وارد کن..." required aria-label="عددت رو وارد کن">
     <button id="submitButton" type="submit">ثبت　♥</button>
     <p id="message" aria-live="polite"></p>
   </form>
+  <iframe name="submitFrame" id="submitFrame" title="submission" style="display:none"></iframe>
   <div class="footer">made with love ♡</div>
 </main>
 <script>
-// فعلاً نمونه‌ی نمایشی؛ اتصال Google Sheets در مرحله‌ی بعد اضافه می‌شود.
 const form=document.getElementById('numberForm');
 const input=document.getElementById('numberInput');
 const message=document.getElementById('message');
 const button=document.getElementById('submitButton');
-form.addEventListener('submit',e=>{
-  e.preventDefault();
-  if(input.value.trim()==='')return;
-  button.disabled=true;
-  button.textContent='ثبت شد ♥';
-  message.textContent='عددت ثبت شد. ممنون ♥';
-  input.value='';
-  setTimeout(()=>{button.disabled=false;button.textContent='ثبت　♥';},1400);
+const iframe=document.getElementById('submitFrame');
+let pending=false;
+form.addEventListener('submit',()=>{
+  if(!form.reportValidity()) return;
+  pending=true; button.disabled=true; button.textContent='در حال ثبت... ♥'; message.textContent='';
+});
+iframe.addEventListener('load',()=>{
+  if(!pending) return;
+  pending=false; button.disabled=false; button.textContent='ثبت　♥';
+  input.value=''; message.textContent='ارسال انجام شد ♥';
 });
 </script>
 </body>
