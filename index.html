@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>یه عدد کوچولو ♥</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+:root{--pink:#d94e7d;--deep:#743147;--muted:#a66c7d;--line:#f0b3c5}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;overflow-x:hidden;display:grid;place-items:center;padding:32px 16px;font-family:'Vazirmatn',Tahoma,sans-serif;color:var(--deep);background:radial-gradient(ellipse at 50% 30%,#fff7f9 0%,#fce1e9 45%,#f8cbd9 100%)}
+.decor{position:fixed;pointer-events:none;user-select:none;color:#e76e98;opacity:.48;filter:blur(.1px);font-size:clamp(25px,5vw,66px);animation:float 7s ease-in-out infinite}
+.d1{top:5%;left:7%;filter:blur(2px);opacity:.3}.d2{top:13%;right:12%;font-size:38px}.d3{bottom:7%;left:12%;font-size:45px;animation-delay:1.5s}.d4{bottom:11%;right:8%;filter:blur(2px);opacity:.3;font-size:70px}.d5{top:48%;left:3%;font-size:25px;animation-delay:2s}.d6{top:50%;right:4%;font-size:28px;animation-delay:3s}
+.card{position:relative;width:min(100%,590px);padding:clamp(30px,6vw,58px) clamp(22px,6vw,64px) 35px;text-align:center;border:1px solid rgba(255,255,255,.86);border-radius:42px;background:rgba(255,255,255,.48);box-shadow:0 28px 90px rgba(150,64,95,.13),inset 0 1px 0 rgba(255,255,255,.8);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.heart-wrap{height:128px;display:grid;place-items:center;margin-bottom:8px}
+.big-heart{font-size:96px;line-height:1;color:#df4d7b;text-shadow:0 10px 22px rgba(194,55,100,.25);display:inline-block;animation:heartbeat 2.4s ease-in-out infinite}
+.spark{position:absolute;color:#dc668b;font-size:30px}.s1{top:90px;left:18%}.s2{top:96px;right:18%}
+h1{font-size:clamp(26px,5vw,36px);font-weight:600;margin:8px 0 12px;letter-spacing:-.5px}
+.subtitle{font-size:clamp(15px,3.5vw,20px);color:#a24c68;margin:0 0 35px;font-weight:400}
+form{display:grid;gap:16px}
+input{width:100%;height:70px;border:2px solid #f0b2c5;border-radius:24px;background:rgba(255,255,255,.76);padding:0 22px;text-align:center;font:500 20px 'Vazirmatn',Tahoma,sans-serif;color:#784354;outline:none;transition:.25s;box-shadow:0 7px 18px rgba(217,100,141,.06)}
+input::placeholder{color:#a98490}input:focus{border-color:#d85c86;box-shadow:0 0 0 5px rgba(216,92,134,.12)}
+button{height:70px;border:0;border-radius:25px;background:linear-gradient(135deg,#df638c,#c94370);color:#fff;font:600 21px 'Vazirmatn',Tahoma,sans-serif;cursor:pointer;box-shadow:0 12px 24px rgba(191,60,102,.25),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .2s,filter .2s}button:hover{transform:translateY(-2px);filter:brightness(1.03)}button:active{transform:translateY(0)}button:disabled{opacity:.65;cursor:default}
+#message{min-height:24px;margin:0;font-size:14px;color:#bd5578}
+.footer{display:flex;align-items:center;justify-content:center;gap:13px;margin-top:25px;color:#ad6e82;font-size:17px;font-style:italic;letter-spacing:.3px}.footer:before,.footer:after{content:'';height:1px;width:70px;background:#e5a7ba;opacity:.65}
+@keyframes heartbeat{0%,100%{transform:scale(1)}12%{transform:scale(1.07)}24%{transform:scale(1)}36%{transform:scale(1.04)}48%{transform:scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(5deg)}}
+@media(max-width:480px){body{padding:20px 12px}.card{border-radius:30px;padding:32px 22px 26px}.heart-wrap{height:110px}.big-heart{font-size:82px}.s1{left:12%;top:78px}.s2{right:12%;top:85px}input,button{height:62px;border-radius:19px}.footer{font-size:15px;margin-top:19px}.footer:before,.footer:after{width:40px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<span class="decor d1">♥</span><span class="decor d2">♡</span><span class="decor d3">♡</span><span class="decor d4">♥</span><span class="decor d5">♥</span><span class="decor d6">♡</span>
+<main class="card">
+  <span class="spark s1">♡</span><span class="spark s2">♡</span>
+  <div class="heart-wrap"><span class="big-heart">♥</span></div>
+  <h1>یه عدد کوچولو</h1>
+  <p class="subtitle">بعضی چیزا فقط بین خودمون می‌مونن. ♥</p>
+  <form id="numberForm">
+    <input id="numberInput" type="number" inputmode="numeric" placeholder="عددت رو وارد کن..." required aria-label="عددت رو وارد کن">
+    <button id="submitButton" type="submit">ثبت　♥</button>
+    <p id="message" aria-live="polite"></p>
+  </form>
+  <div class="footer">made with love ♡</div>
+</main>
+<script>
+// فعلاً نمونه‌ی نمایشی؛ اتصال Google Sheets در مرحله‌ی بعد اضافه می‌شود.
+const form=document.getElementById('numberForm');
+const input=document.getElementById('numberInput');
+const message=document.getElementById('message');
+const button=document.getElementById('submitButton');
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  if(input.value.trim()==='')return;
+  button.disabled=true;
+  button.textContent='ثبت شد ♥';
+  message.textContent='عددت ثبت شد. ممنون ♥';
+  input.value='';
+  setTimeout(()=>{button.disabled=false;button.textContent='ثبت　♥';},1400);
+});
+</script>
+</body>
+</html>
